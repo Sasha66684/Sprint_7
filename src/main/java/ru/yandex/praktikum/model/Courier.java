@@ -1,5 +1,8 @@
+package ru.yandex.praktikum.model;
 
-import ru.yandex.praktikum.model.DataCourier;
+
+
+
 
 public class Courier {
     private String login;
