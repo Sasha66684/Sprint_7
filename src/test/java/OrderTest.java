@@ -6,12 +6,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import ru.yandex.praktikum.model.CourierOrder;
-
 import ru.yandex.praktikum.orders.CreatingReceivingListOfOrders;
-import ru.yandex.praktikum.steps.CourierSteps;
-
 import java.util.List;
-
 import static org.apache.http.HttpStatus.SC_CREATED;
 import static org.hamcrest.Matchers.greaterThan;
 
@@ -37,7 +33,6 @@ public class OrderTest {
     @Before
     public void setUp() {
         creatingReceivingListOfOrders = new CreatingReceivingListOfOrders();
-
     }
     @Test
     @DisplayName("Создание заказа с указанием параметров цвета")
@@ -50,5 +45,4 @@ public class OrderTest {
                 .extract()
                 .path("track");
     }
-
 }
