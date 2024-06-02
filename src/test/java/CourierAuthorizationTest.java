@@ -25,6 +25,9 @@ public class CourierAuthorizationTest {
         dataCourier = CourierRandomGen.getRandom();
         courierSteps.createCourier(dataCourier);
         courier = Courier.from(dataCourier);
+        ValidatableResponse response = courierSteps.loginCourier(Courier.from(dataCourier));
+        courierId = response.extract().path("id");
+
     }
     @Test
     @DisplayName("Успешное создание курьера")
