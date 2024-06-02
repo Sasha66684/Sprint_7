@@ -7,7 +7,7 @@ import ru.yandex.praktikum.orders.CreatingReceivingListOfOrders;
 import static org.apache.http.HttpStatus.SC_OK;
 import static org.hamcrest.Matchers.notNullValue;
 
-public class GettingListOrders {
+public class GettingListOrdersTest {
     private CreatingReceivingListOfOrders creatingReceivingListOfOrders;
 
     @Test
