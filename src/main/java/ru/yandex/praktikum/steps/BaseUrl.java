@@ -7,14 +7,16 @@ import io.restassured.filter.log.ResponseLoggingFilter;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 
+import static ru.yandex.praktikum.config.RestConfig.HOST;
+
 public abstract class BaseUrl {
     protected RequestSpecification requestSpecification() {
         return new RequestSpecBuilder()
-                .setBaseUri("https://qa-scooter.praktikum-services.ru")
                 .setContentType(ContentType.JSON)
                 .addFilter(new RequestLoggingFilter())
                 .addFilter(new ResponseLoggingFilter())
                 .addFilter(new ErrorLoggingFilter())
+                .setBaseUri(HOST)
                 .build();
     }
 
