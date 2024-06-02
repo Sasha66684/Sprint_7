@@ -20,12 +20,10 @@ public class CreatingCourierTest {
 
 
     @Before
-
     public void setUp() {
         courierSteps = new CourierSteps();
         dataCourier = CourierRandomGen.getRandom();
     }
-
     @Test
     @DisplayName("Создание нового курьера")
     @Description("Позитивная проверка создания курьера")
@@ -62,7 +60,6 @@ public class CreatingCourierTest {
         response.assertThat()
                 .statusCode(SC_BAD_REQUEST)
                 .body("message", equalTo("Недостаточно данных для создания учетной записи"));
-
     }
     @Test
     @DisplayName("Создание курьера с пустым полем password")
@@ -73,10 +70,8 @@ public class CreatingCourierTest {
         response.assertThat()
                 .statusCode(SC_BAD_REQUEST)
                 .body("message", equalTo("Недостаточно данных для создания учетной записи"));
-
     }
     @After
-
     public void deleteCourier() {
         if (courierId != 0) {
             courierSteps.delete(String.valueOf(courierId));
