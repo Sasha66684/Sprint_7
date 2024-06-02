@@ -13,21 +13,19 @@ import static org.apache.http.HttpStatus.*;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;
 
-public class CourierAuthorization {
+public class CourierAuthorizationTest {
     private CourierSteps courierSteps;
     private DataCourier dataCourier;
     private Courier courier;
     private int courierId;
 
     @Before
-
     public void setUp() {
         courierSteps = new CourierSteps();
         dataCourier = CourierRandomGen.getRandom();
         courierSteps.createCourier(dataCourier);
         courier = Courier.from(dataCourier);
     }
-
     @Test
     @DisplayName("Успешное создание курьера")
     @Description("Позитивная проверка курьера добавление в системе")
@@ -40,8 +38,6 @@ public class CourierAuthorization {
                 .path("id");
         courierId = response.extract().path("id");
     }
-
-
     @Test
     @DisplayName("Тест на ошибку  пустого логина")
     @Description("Негативная проверка курьера с пустым полем login")
@@ -52,7 +48,6 @@ public class CourierAuthorization {
                 .statusCode(SC_BAD_REQUEST)
                 .body("message", equalTo("Недостаточно данных для входа"));
     }
-
     @Test
     @DisplayName("Курьер с пустым полем password")
     @Description("Негативная проверка курьера с пустым полем password")
@@ -76,10 +71,7 @@ public class CourierAuthorization {
                 .body("message", equalTo("Учетная запись не найдена"));
     }
     @After
-
     public void deleteCourier() {
-        if (courierId != 0) {
-            courierSteps.delete(String.valueOf(courierId));
-        }
+        courierSteps.delete(String.valueOf(courierId));
     }
 }
