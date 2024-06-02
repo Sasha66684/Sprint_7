@@ -22,7 +22,6 @@ public class CourierDeleteTest {
     private int courierId;
 
     @Before
-
     public void setUp() {
         courierSteps = new CourierSteps();
         dataCourier = CourierRandomGen.getRandom();
@@ -30,7 +29,6 @@ public class CourierDeleteTest {
         ValidatableResponse response = courierSteps.loginCourier(Courier.from(dataCourier));
         courierId = response.extract().path("id");
     }
-
     @Test
     @DisplayName("Удаление курьера из системы")
     @Description("Позитивная проверка удаления курьера из системы")
@@ -40,7 +38,6 @@ public class CourierDeleteTest {
                 .statusCode(SC_OK)
                 .body("ok", is(true));
     }
-
     @Test
     @DisplayName("Удаление курьера без id")
     @Description("Негативная проверка удаления курьера без передачи id")
@@ -49,7 +46,6 @@ public class CourierDeleteTest {
         response.assertThat()
                 .statusCode(SC_NOT_FOUND)
                 .body("message", equalTo("Not Found."));
-
     }
     @Test
     @DisplayName("Удаление курьера с несуществующим id")
@@ -61,11 +57,9 @@ public class CourierDeleteTest {
                 .body("message", equalTo("Курьера с таким id нет."));
     }
     @After
-
     public void deleteCourier() {
         if (courierId != 0) {
             courierSteps.delete(String.valueOf(courierId));
         }
     }
-
 }
